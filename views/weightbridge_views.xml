@@ -34,11 +34,11 @@
             action="raw_material_action_purchased"
             sequence="1" />
 
-    <record id="raw_material_purchased_tree" model="ir.ui.view">
+    <record id="weightbridge_raw_material_tree" model="ir.ui.view">
         <field name="name">weightbridge.raw.material.tree</field>
         <field name="model">weightbridge.raw.material</field>
         <field name="arch" type="xml">
-            <tree create="false" default_order="start_date asc" default_group_by="start_date">
+            <tree create="false" default_order="start_date asc"> <!-- default_group_by="start_date" -->
                 <field name="start_date" string="Date"  widget="date"/> <!-- options="{'format': 'dd/MM/yyyy'}" -->
                 <field name="name" />
                 <field name="farmer_id"/>
