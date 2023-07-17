@@ -43,7 +43,11 @@
                 <field name="name" />
                 <field name="farmer_id"/>
                 <field name="net_weight" />
-                <field name="status"/>
+                <field name="state"
+                    decoration-success="state == 'paid'"
+                    decoration-info="state == 'confirmed'"
+                    decoration-warning="state == 'to_paid'"
+                    widget="badge" optional="show"/>
             </tree>
         </field>
     </record>
