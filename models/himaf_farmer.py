@@ -3,5 +3,5 @@ from odoo import api, fields, models, _
 
 class HimafFarmer(models.Model):
     _name = "himaf.farmer"
-    _inherit = ['res.partner','mail.thread', 'mail.activity.mixin']
+    _inherit = 'res.partner'
     
