@@ -4,10 +4,6 @@
     <menuitem id="menu_raw_material_management" name="Raw Material"
             parent="purchase.menu_purchase_root" sequence="2" />
 
-    <menuitem id="menu_weightbridge_management" name="Weightbridge"
-            parent="menu_raw_material_management" 
-            action="raw_material_action_purchased"
-            sequence="1" />
 
     <menuitem id="menu_farmers" name="Farmers"
             parent="menu_raw_material_management"
@@ -32,6 +28,11 @@
           </p>
         </field> -->
     </record>
+
+    <menuitem id="menu_weightbridge_management" name="Weightbridge"
+            parent="menu_raw_material_management" 
+            action="raw_material_action_purchased"
+            sequence="1" />
 
     <record id="raw_material_purchased_tree" model="ir.ui.view">
         <field name="name">raw.material.purchased.tree</field>
