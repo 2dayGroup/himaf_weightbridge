@@ -12,6 +12,7 @@
     "summary": "Receive and deliver products from the weight bridge",
     "depends": ["purchase", "stock"],
     "data": [
+        'security/ir.model.access.csv',
         'views/weightbridge_views.xml'
         ],
     "installable": True,
