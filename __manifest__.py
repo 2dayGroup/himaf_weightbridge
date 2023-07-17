@@ -12,7 +12,7 @@
     "summary": "Receive and deliver products from the weight bridge",
     "depends": ["purchase", "stock"],
     "data": [
-        'views/weightbridge_raw_material_view.xml'
+        'views/weightbridge_views.xml'
         ],
     "installable": True,
     
