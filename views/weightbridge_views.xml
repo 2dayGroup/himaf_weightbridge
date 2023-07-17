@@ -74,10 +74,6 @@
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="provenance" />
-                            <div title="Transport">
-                                <field name="car_name" />
-                            <field name="driver_name" />
-                            </div>
                             
     
                             <!-- <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
@@ -92,29 +88,37 @@
                         <group>
                             <field name="farmer_id" />
                             <field name="created_by" />
+                            <div name="payment_action" class="flex-grow-1">
 
-                            <label for="date_authorized" />
-                            <div name="date_authorized" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" class="o_row">
-                                <field name="date_authorized"/>
-                                <!-- <field name="mail_reception_confirmed" invisible="1"/> -->
-                                <span class="text-muted" name="authorized_by" readonly="1" >
-                                <field name="authorized_by" />
-                                </span>
-                            </div>
-                            <label for="date_paid"/>
-                            <div name="date_paid" attrs="{'invisible': [('state','not in',('paid'))]}" class="o_row">
-                                <field name="date_paid" />
-                                <!-- <field name="mail_reception_confirmed" invisible="1"/> -->
-                                <span class="text-muted" name="paid_by" readonly="1">
-                                <field name="paid_by" />
-                                </span>
+                                <group string="Payments Authorisation" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" class="o_row">
+                                    <field name="date_authorized"/>
+                                    <span class="text-muted" name="authorized_by" readonly="1" >
+                                        <field name="authorized_by" />
+                                    </span>
+                                </group>
+                                <group string="Payments" attrs="{'invisible': [('state','not in',('paid'))]}" >
+                                    <field name="date_paid" />
+                                    <span class="text-muted" name="paid_by" readonly="1">
+                                        <field name="paid_by" />
+                                    </span>
+                                </group>
                             </div>
                             
+                            
+                            
                         </group>
+                        <group title="Transport" name="logistics_div">
+                            <field name="car_name" />
+                            <field name="driver_name" />
+                        </group>
+
+                        <div>
+                            <field name="entry_weight" />
+                            <field name="output_weight" />
+                            <field name="net_weight" />
+                        </div>
                     </group>
-                    <field name="entry_weight" />
-                    <field name="output_weight" />
-                    <field name="net_weight" />
+                    
                     
                     <!-- <notebook>
                         <page string="Products" name="products">
@@ -332,5 +336,5 @@
             action="raw_material_action_purchased"
             sequence="1" />
 
-            
+
 </odoo>
