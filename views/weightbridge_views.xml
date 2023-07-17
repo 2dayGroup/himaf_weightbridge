@@ -35,7 +35,7 @@
             sequence="1" />
 
     <record id="raw_material_purchased_tree" model="ir.ui.view">
-        <field name="name">raw.material.purchased.tree</field>
+        <field name="name">weightbridge.raw.material.tree</field>
         <field name="model">weightbridge.raw.material</field>
         <field name="arch" type="xml">
             <tree create="false" default_order="start_date asc" default_group_by="start_date">
