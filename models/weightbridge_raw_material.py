@@ -21,5 +21,5 @@ class WeightbridgeRawMaterial(models.Model):
     date_authorized = fields.Datetime(string='Date Authorized', states={'to_paid': [('readonly', True)], 'confirmed': [('readonly', True)]})
     paid_by = fields.Many2one('res.users', string='Paid By', states={'to_paid': [('required', False)], 'paid': [('required', True)], 'confirmed': [('required', False)]})
     date_paid = fields.Datetime(string='Date Paid', states={'to_paid': [('readonly', True)], 'paid': [('readonly', True)], 'confirmed': [('readonly', False)]})
-    status = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
+    state = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
         
