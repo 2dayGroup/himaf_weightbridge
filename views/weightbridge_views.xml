@@ -10,29 +10,7 @@
             action="account.res_partner_action_supplier" sequence="5"/>
 
     
-    <record id="raw_material_action_purchased" model="ir.actions.act_window">
-        <field name="name">Raw Material</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">weightbridge.raw.material</field>
-        <field name="view_mode">tree, form</field>
-        <!-- <field name="context">{"search_default_filter_to_purchase":1, "purchase_product_template": 1}</field> -->
-        <!-- <field name="search_view_id" ref="product.product_template_search_view"/> -->
-        <field name="view_id" eval="False"/> <!-- Force empty -->
-        <!-- TODO: ajouter un text d'aide -->
-        <!-- <field name="help" type="html">
-          <p class="o_view_nocontent_smiling_face">
-            No product found. Let's create one!
-          </p><p>
-            You must define a product for everything you sell or purchase,
-            whether it's a storable product, a consumable or a service.
-          </p>
-        </field> -->
-    </record>
-
-    <menuitem id="menu_weightbridge_management" name="Weightbridge"
-            parent="menu_raw_material_management" 
-            action="raw_material_action_purchased"
-            sequence="1" />
+    
 
     <record id="weightbridge_raw_material_tree" model="ir.ui.view">
         <field name="name">weightbridge.raw.material.tree</field>
@@ -329,4 +307,30 @@
                 </form>
             </field>
         </record>
+
+    <record id="raw_material_action_purchased" model="ir.actions.act_window">
+        <field name="name">Raw Material</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">weightbridge.raw.material</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="context">{"search_default_filter_to_purchase":1, "purchase_product_template": 1}</field> -->
+        <!-- <field name="search_view_id" ref="product.product_template_search_view"/> -->
+        <field name="view_id" eval="False"/> <!-- Force empty -->
+        <!-- TODO: ajouter un text d'aide -->
+        <!-- <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No product found. Let's create one!
+          </p><p>
+            You must define a product for everything you sell or purchase,
+            whether it's a storable product, a consumable or a service.
+          </p>
+        </field> -->
+    </record>
+
+    <menuitem id="menu_weightbridge_management" name="Weightbridge"
+            parent="menu_raw_material_management" 
+            action="raw_material_action_purchased"
+            sequence="1" />
+
+            
 </odoo>
