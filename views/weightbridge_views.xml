@@ -115,13 +115,17 @@
                             <div name="date_authorized" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" class="o_row">
                                 <field name="date_authorized"/>
                                 <!-- <field name="mail_reception_confirmed" invisible="1"/> -->
-                                <span class="text-muted" name="authorized_by" readonly="1">
+                                <span class="text-muted" name="authorized_by" readonly="1" >
+                                <field name="authorized_by" />
+                                </span>
                             </div>
                             <label for="date_paid"/>
                             <div name="date_paid" attrs="{'invisible': [('state','not in',('paid'))]}" class="o_row">
                                 <field name="date_paid" >
                                 <!-- <field name="mail_reception_confirmed" invisible="1"/> -->
                                 <span class="text-muted" name="paid_by" readonly="1">
+                                <field name="paid_by" />
+                                </span>
                             </div>
                             
                         </group>
