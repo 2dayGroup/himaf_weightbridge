@@ -13,7 +13,7 @@ class WeightbridgeRawMaterial(models.Model):
     provenance = fields.Char(string='Provenance', required=True)
     car_name = fields.Char(string='Car Name', required=True)
     driver_name = fields.Char(string='Driver Name', required=True)
-    farmer_id = fields.Many2one('himaf.farmer', string='Farmer', required=True)
+    farmer_id = fields.Many2one('himaf.farmer', string='Farmer', required=False)
     entry_weight = fields.Float(string='Entry Weight', required=True)
     output_weight = fields.Float(string='Output Weight', required=True)
     net_weight = fields.Float(string='Net Weight', required=True)
