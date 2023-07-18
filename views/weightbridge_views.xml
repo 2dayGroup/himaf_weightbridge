@@ -113,7 +113,7 @@
                             <div class="clearfix"/>
                     <group></group>
                     
-                    <group class="oe_right">
+                    <group class="oe_right oe_subtotal_footer">
                     <label for="entry_weight" />
                     <div>
                         <field name="entry_weight" class="oe_inline"/>
