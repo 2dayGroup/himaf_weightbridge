@@ -124,11 +124,13 @@
                         <field name="output_weight" class="oe_inline" />
                         /kg
                     </div>
-                    <label for="net_weight" />
-                    <h1 class="oe_subtotal_footer oe_right" title="Net Weight">
+                    <group string="Net Weight" class="oe_right" colspan="2">
+                        <h1 >
                         <field name="net_weight" class="oe_inline" nolabel="1"/>
                         /kg
                     </h1>
+                    </group>
+                    
                         
                     </group>
                 </group>
