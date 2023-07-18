@@ -13,6 +13,7 @@
     "depends": ["purchase", "stock"],
     "data": [
         'views/weightbridge_views.xml',
+        'views/farmer_views.xml',
         'security/ir.model.access.csv'
         ],
     "installable": True,
