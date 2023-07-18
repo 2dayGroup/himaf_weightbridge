@@ -125,8 +125,8 @@
                         /kg
                     </div>
                     <div class="oe_right" colspan="2">
-                        <group string="Net Weight" class="oe_right">
-                        <h1>
+                        <group string="Net Weight" class="oe_right" colspan="2">
+                        <h1 colspan="2">
                             <field name="net_weight" class="oe_inline" nolabel="1"/>
                            <span>/kg</span> 
                         </h1>
