@@ -24,4 +24,18 @@ class WeightbridgeRawMaterial(models.Model):
     date_paid = fields.Datetime(string='Date Paid', states={'to_paid': [('readonly', True)], 'paid': [('readonly', True)], 'confirmed': [('readonly', False)]})
     state = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
     channel_ids = fields.Many2many('raw.material.channel', 'himaf_raw_material_channel_rel', 'raw_material_id', 'channel_id', string='Channels')
+    
+    
+    def action_confirm(self):
+        """ Confirm the given quotation(s) and set their confirmation date.
+
+        If the corresponding setting is enabled, also locks the Sale Order.
+
+        :return: True
+        :rtype: bool
+        :raise: UserError if trying to confirm locked or cancelled SO's
+        """
+        
+        self.write({'state': 'to_paid'})
+
         

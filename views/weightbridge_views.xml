@@ -49,6 +49,10 @@
                 <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" data-hotkey="x" />
                 <button name="button_done" type="object" string="Lock" states="purchase" data-hotkey="l"/>
                 <button name="button_unlock" type="object" string="Unlock" states="done" groups="purchase.group_purchase_manager" data-hotkey="l"/> -->
+
+                <button name="action_confirm" id="action_confirm" data-hotkey="v"
+                    string="Authorize Payment" class="btn-primary" type="object" states="confirmed"
+                    /> <!-- attrs="{'invisible': [('state', 'not in', ('confirmed'))]}" -->
                 <field name="state" widget="statusbar" statusbar_visible="confirmed,to_paid,paid,cancel" readonly="1"/>
             </header>
             <sheet>
@@ -124,10 +128,10 @@
                         <field name="output_weight" class="oe_inline" />
                         Kg
                     </div>
-                    <div class="oe_right" >
-                        <group string="Net Weight" class="oe_right" >
-                        <h1 >
-                            <field name="net_weight" class="oe_inline" nolabel="1"/>
+                    <div colspan="2" >
+                        <group string="Net Weight" >
+                        <h1 colspan="2" class="oe_right">
+                            <field name="net_weight" class="oe_inline" nolabel="1" widget="integer"/>
                             <span>Kg</span> 
                         </h1>
                         </group>
