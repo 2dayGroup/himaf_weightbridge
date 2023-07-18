@@ -113,10 +113,23 @@
                             <div class="clearfix"/>
                     <group></group>
                     
-                    <group class="oe_subtotal_footer oe_right">
+                    <group class="oe_right">
+                    <label for="entry_weight" />
+                    <div>
                         <field name="entry_weight" />
+                        /kg
+                    </div>
+                    <label for="output_weight" />
+                    <div>
                         <field name="output_weight" />
+                        /kg
+                    </div>
+                    <label for="net_weight" />
+                    <h1>
                         <field name="net_weight" />
+                        /kg
+                    </h1>
+                        
                     </group>
                 </group>
                 
