@@ -116,17 +116,17 @@
                     <group class="oe_right">
                     <label for="entry_weight" />
                     <div>
-                        <field name="entry_weight" />
+                        <field name="entry_weight" class="oe_inline"/>
                         /kg
                     </div>
-                    <label for="output_weight" />
+                    <label for="output_weight"  />
                     <div>
-                        <field name="output_weight" />
+                        <field name="output_weight" class="oe_inline" />
                         /kg
                     </div>
                     <label for="net_weight" />
                     <h1>
-                        <field name="net_weight" />
+                        <field name="net_weight" class="oe_inline" />
                         /kg
                     </h1>
                         
