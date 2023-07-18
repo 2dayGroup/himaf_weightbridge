@@ -117,22 +117,21 @@
                     <label for="entry_weight" />
                     <div>
                         <field name="entry_weight" class="oe_inline"/>
-                        /kg
+                        Kg
                     </div>
                     <label for="output_weight"  />
                     <div>
                         <field name="output_weight" class="oe_inline" />
-                        /kg
+                        Kg
                     </div>
-                    <div class="oe_right" colspan="2">
-                        <group string="Net Weight" class="oe_right" colspan="2">
-                        <h1 colspan="2">
+                    <div class="oe_right" >
+                        <group string="Net Weight" class="oe_right" >
+                        <h1 >
                             <field name="net_weight" class="oe_inline" nolabel="1"/>
-                           <span>/kg</span> 
+                            <span>Kg</span> 
                         </h1>
                         </group>
                     </div>
-                    
                         
                     </group>
                 </group>
