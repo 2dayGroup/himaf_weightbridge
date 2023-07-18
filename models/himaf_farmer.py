@@ -3,8 +3,11 @@ from odoo import api, fields, models, _
 
 class HimafFarmer(models.Model):
     _name = "himaf.farmer"
-    _inherit = 'res.partner'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    channel_ids = fields.Many2many('farmer.channel', 'himaf_farmer_channel_rel', 'farmer_id', 'channel_id', string='Channels')
-    meeting_ids = fields.Many2many('farmer.meeting', 'himaf_farmer_meeting_rel', 'farmer_id', 'meeting_id', string='Meetings')
+    name = fields.Char(string='Name', required=True)
+    ref = fields.Char(string='Reference', index=True)
+    mobile = fields.Char(unaccent=False)
+    channel_ids = fields.Many2many('himaf.farmer.channel', 'himaf_farmer_channel_rel', 'farmer_id', 'channel_id', string='Channels')
+    
     
