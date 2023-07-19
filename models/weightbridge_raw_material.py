@@ -35,7 +35,30 @@ class WeightbridgeRawMaterial(models.Model):
         :rtype: bool
         :raise: UserError if trying to confirm locked or cancelled SO's
         """
+        date_authorized = fields.Datetime.now()
+        user = self.env.user
+        self.write({'state': 'to_paid',
+                    'date_authorized': date_authorized,
+                    'authorized_by': user.id
+                    })
         
-        self.write({'state': 'to_paid'})
+    def action_unconfirm(self):
+        self.write({'state': 'confirmed',
+                    'date_authorized': None,
+                    'authorized_by': None
+                    })
+        
+        
+    def action_paid(self):
+        
+        #TODO: ajouter le mode de paiement
+        date_paid = fields.Datetime.now()
+        user = self.env.user
+        
+        self.write({'state': 'paid',
+                    'date_paid': date_paid,
+                    'paid_by': user.id
+                    })
+                    
 
         

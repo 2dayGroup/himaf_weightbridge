@@ -52,7 +52,13 @@
 
                 <button name="action_confirm" id="action_confirm" data-hotkey="v"
                     string="Authorize Payment" class="btn-primary" type="object" states="confirmed"
-                    /> <!-- attrs="{'invisible': [('state', 'not in', ('confirmed'))]}" -->
+                    /> 
+                    <button name="action_paid" id="action_paid" data-hotkey="p"
+                    string="Payed" class="btn-primary" type="object" states="to_paid"
+                    />
+                <button name="action_unconfirm" id="action_unconfirm" data-hotkey="x"
+                    string="Cancel Authorisation to paid" class="btn-secondary" type="object" states="to_paid"
+                    />
                 <field name="state" widget="statusbar" statusbar_visible="confirmed,to_paid,paid,cancel" readonly="1"/>
             </header>
             <sheet>
@@ -90,32 +96,27 @@
                     <group>
                         <field name="farmer_id" />
                         <field name="created_by" />
-                        <div name="payment_action" class="flex-grow-1">
-
-                            <group string="Payments Authorisation" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" class="o_row">
-                                <field name="date_authorized"/>
-                                <span class="text-muted" name="authorized_by" readonly="1" >
-                                    <field name="authorized_by" />
-                                </span>
-                            </group>
-                            <group string="Payments" attrs="{'invisible': [('state','not in',('paid'))]}" >
-                                <field name="date_paid" />
-                                <span class="text-muted" name="paid_by" readonly="1">
-                                    <field name="paid_by" />
-                                </span>
-                            </group>
-                        </div>
-                        
-                        
                         
                     </group>
+
                     <group string="Transport" name="logistics_div">
-                        <field name="car_name" />
                         <field name="driver_name" />
+                        <field name="car_name" />
+                    </group>
+
+                    <group string="Payments Authorisation" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" >
+                        <field name="date_authorized"/>
+                            <field name="authorized_by" />
+                    </group>
+
+                    <group string="Payments" attrs="{'invisible': [('state','not in',('paid'))]}" >
+                        <field name="date_paid" />
+                            <field name="paid_by" />
                     </group>
                     
-                            <div class="clearfix"/>
-                    <group></group>
+                    
+                    <div class="clearfix mb-3" colspan="2"/>
+                    
                     
                     <group class="oe_right oe_subtotal_footer">
                     <label for="entry_weight" />
