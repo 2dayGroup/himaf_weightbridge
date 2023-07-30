@@ -48,11 +48,12 @@ class WeightbridgeRawMaterial(models.Model):
             'partner_id': ticket.partner_id,               # Remplacez par l'ID du partenaire associé à la facture
             'scheduled_date': ticket.start_date,
             'origin': ticket.name,          # Remplacez par le nom de l'origine de la facture
-            'picking_type_id': picking_type_id,          # Remplacez par l'ID du type de facture
-            'move_ids': [          # Liste des lignes de la facture
+            'picking_type_id': picking_type_id[0],
+            'picking_type_code': 'incoming',
+            'move_lines': [
                 (0, 0, {
-                    'product_id': product_id,       # Remplacez par l'ID du produit associé à la ligne de facture
-                    'quantity_done': ticket.net_weight,         # Quantité de produits
+                    'product_id': product_id[0],   # Remplacez par l'ID du produit à réceptionner
+                    'product_uom_qty': 10,  # Quantité à réceptionner
                 }),
             ],
         }
