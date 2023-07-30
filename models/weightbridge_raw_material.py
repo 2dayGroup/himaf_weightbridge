@@ -61,6 +61,7 @@ class WeightbridgeRawMaterial(models.Model):
                     'quantity_done': ticket.net_weight,  # Quantité à réceptionner
                     'location_id': picking_type_id[0].default_location_src_id and 4,
                     'location_dest_id': picking_type_id[0].default_location_dest_id and 8,
+                    'name': product_id[0].name,
                 }),
             ],
         }
