@@ -59,7 +59,7 @@
                 <button name="action_unconfirm" id="action_unconfirm" data-hotkey="x"
                     string="Cancel Authorisation to paid" class="btn-secondary" type="object" states="to_paid"
                     />
-                <field name="state" widget="statusbar" statusbar_visible="confirmed,to_paid,paid,cancel" readonly="1"/>
+                <field name="state" widget="statusbar" statusbar_visible="confirmed,to_paid,paid" readonly="1"/>
             </header>
             <sheet>
                 <!-- <div class="oe_button_box" name="button_box">
@@ -94,7 +94,9 @@
                         <field name="currency_id" invisible="1" groups="!base.group_multi_currency"/> -->
                     </group>
                     <group>
-                        <field name="farmer_id" />
+                        <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
+                                placeholder="Name, TIN, Email, or Reference"
+                            />
                         <field name="created_by" />
                         
                     </group>
