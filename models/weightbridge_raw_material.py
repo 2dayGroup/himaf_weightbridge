@@ -7,7 +7,7 @@ class WeightbridgeRawMaterial(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     
-    name = fields.Char('Ticket Reference', required=True, index='trigram', copy=False, default='New')
+    name = fields.Char('Ticket Reference', required=True, index='trigram', copy=False, default='New', unique=True)
     start_date = fields.Datetime(string='Start Date', default=fields.Datetime.now, required=True)
     end_date = fields.Datetime(string='End Date', default=fields.Datetime.now, required=True)
     provenance = fields.Char(string='Provenance', required=True)

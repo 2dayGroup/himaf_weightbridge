@@ -14,7 +14,7 @@
         <field name="name">weightbridge.raw.material.tree</field>
         <field name="model">weightbridge.raw.material</field>
         <field name="arch" type="xml">
-            <tree create="false" default_order="start_date asc"> <!-- default_group_by="start_date" -->
+            <tree create="false" default_order="start_date desc"> <!-- default_group_by="start_date" -->
                 <field name="start_date" string="Date"  widget="date"/> <!-- options="{'format': 'dd/MM/yyyy'}" -->
                 <field name="name" />
                 <field name="partner_id"/>
@@ -59,38 +59,39 @@
                     
                     <span class="o_form_label">Raw Material Order </span>
                     <h1 class="d-flex">
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" nolabel="1"/>
                     </h1>
                 </div>
                 <group>
                     <group>
-                        <field name="start_date" />
-                        <field name="end_date" />
-                        <field name="provenance" />
+                        <field name="start_date" readonly="1" />
+                        <field name="end_date" readonly="1" />
+                        <field name="provenance" readonly="1" />
                        
                     </group>
                     <group>
                         <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
                                 placeholder="Name, TIN, Email, or Reference"
+                                readonly="1" 
                             />
-                        <field name="created_by" />
+                        <field name="created_by" readonly="1" />
                         <field name="company_id" invisible="1"/>
                         
                     </group>
 
                     <group string="Transport" name="logistics_div">
-                        <field name="driver_name" />
-                        <field name="car_name" />
+                        <field name="driver_name" readonly="1" />
+                        <field name="car_name" readonly="1" />
                     </group>
 
                     <group string="Payments Authorisation" attrs="{'invisible': [('state','not in',('to_paid','paid'))]}" >
-                        <field name="date_authorized"/>
-                            <field name="authorized_by" />
+                        <field name="date_authorized" readonly="1" />
+                            <field name="authorized_by" readonly="1" />
                     </group>
 
                     <group string="Payments" attrs="{'invisible': [('state','not in',('paid'))]}" >
-                        <field name="date_paid" />
-                            <field name="paid_by" />
+                        <field name="date_paid" readonly="1" />
+                            <field name="paid_by" readonly="1" />
                     </group>
                     
                     
@@ -100,18 +101,18 @@
                     <group class="oe_right oe_subtotal_footer">
                     <label for="entry_weight" />
                     <div>
-                        <field name="entry_weight" class="oe_inline"/>
+                        <field name="entry_weight" class="oe_inline" readonly="1" />
                         Kg
                     </div>
                     <label for="output_weight"  />
                     <div>
-                        <field name="output_weight" class="oe_inline" />
+                        <field name="output_weight" class="oe_inline" readonly="1" />
                         Kg
                     </div>
                     <div colspan="2" >
                         <group string="Net Weight" >
                         <h1 colspan="2" class="oe_right">
-                            <field name="net_weight" class="oe_inline" nolabel="1" widget="integer"/>
+                            <field name="net_weight" class="oe_inline" nolabel="1" widget="integer" readonly="1" />
                             <span>Kg</span> 
                         </h1>
                         </group>
