@@ -43,12 +43,12 @@ class WeightbridgeRawMaterial(models.Model):
             ('company_id', '=', self.company_id.id),
         ]
         product_id = self.env['product.template'].search(product_domain, limit=1)
+        picking_type_id = self.env['stock.picking.type'].search([('code', '=', 'incoming'),], limit=1)
         stock_data = {
             'partner_id': ticket.partner_id,               # Remplacez par l'ID du partenaire associé à la facture
             'scheduled_date': ticket.start_date,
             'origin': ticket.name,          # Remplacez par le nom de l'origine de la facture
-            'code': 'incoming',
-            'picking_type_id': 1,          # Remplacez par l'ID du type de facture
+            'picking_type_id': picking_type_id,          # Remplacez par l'ID du type de facture
             'move_ids': [          # Liste des lignes de la facture
                 (0, 0, {
                     'product_id': product_id,       # Remplacez par l'ID du produit associé à la ligne de facture
