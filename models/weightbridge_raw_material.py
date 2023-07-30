@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+import logging
 
 class WeightbridgeRawMaterial(models.Model):
     _name = "weightbridge.raw.material"
@@ -44,6 +45,9 @@ class WeightbridgeRawMaterial(models.Model):
         ]
         product_id = self.env['product.template'].search(product_domain, limit=1)
         picking_type_id = self.env['stock.picking.type'].search([('code', '=', 'incoming'),], limit=1)
+        print('product_id', product_id)
+        print('picking_type_id', picking_type_id)
+        logging.info('picking_type_id %s', picking_type_id)
         stock_data = {
             'partner_id': ticket.partner_id,               # Remplacez par l'ID du partenaire associé à la facture
             'scheduled_date': ticket.start_date,
