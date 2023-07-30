@@ -7,7 +7,7 @@ class WeightbridgeRawMaterial(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
     
-    name = fields.Char('Ticket Reference', required=True, index='trigram', copy=False, default='New', unique=True)
+    name = fields.Char('Ticket Reference', required=True, index='trigram', copy=False, default='New')
     start_date = fields.Datetime(string='Start Date', default=fields.Datetime.now, required=True)
     end_date = fields.Datetime(string='End Date', default=fields.Datetime.now, required=True)
     provenance = fields.Char(string='Provenance', required=True)
@@ -25,6 +25,11 @@ class WeightbridgeRawMaterial(models.Model):
     state = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
     channel_ids = fields.Many2many('raw.material.channel', 'himaf_raw_material_channel_rel', 'raw_material_id', 'channel_id', string='Channels')
     company_id = fields.Many2one('res.company', 'Company', required=True, index=True, default=lambda self: self.env.company.id)
+    
+    
+    _sql_constraints = [
+        ('uniq_name', 'unique(name)', "A name already exists with this name . Ticket ref must be unique!"),
+    ]
     
     
     def action_confirm(self):
