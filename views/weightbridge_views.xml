@@ -82,7 +82,7 @@
                         <field name="start_date" />
                         <field name="end_date" />
                         <field name="provenance" />
-                        <field name="company_id" invisible="1"/>
+                        <!-- <field name="company_id" invisible="1"/> -->
                         
 
                         <!-- <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
