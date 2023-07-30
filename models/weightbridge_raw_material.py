@@ -26,6 +26,7 @@ class WeightbridgeRawMaterial(models.Model):
     state = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
     channel_ids = fields.Many2many('raw.material.channel', 'himaf_raw_material_channel_rel', 'raw_material_id', 'channel_id', string='Channels')
     company_id = fields.Many2one('res.company', 'Company', required=True, index=True, default=lambda self: self.env.company.id)
+    picking_id = fields.Many2one('stock.picking', string='Receptions')
     
     
     _sql_constraints = [
@@ -59,13 +60,15 @@ class WeightbridgeRawMaterial(models.Model):
                 (0, 0, {
                     'product_id': product_id[0].id,   # Remplacez par l'ID du produit à réceptionner
                     'product_uom_qty': ticket.net_weight,  # Quantité à réceptionner
+                    'quantity_done': ticket.net_weight,  # Quantité à réceptionner
                     'location_id': picking_type_id[0].default_location_src_id and 4,
                     'location_dest_id': picking_type_id[0].default_location_dest_id and 8,
                     'name': product_id[0].name,
                 }),
             ],
         }
-        self.env['stock.picking'].create(stock_data)
+        picking_id = self.env['stock.picking'].create(stock_data)
+        ticket.picking_id = picking_id.id
         return ticket
         
     

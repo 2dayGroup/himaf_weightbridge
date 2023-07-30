@@ -75,6 +75,7 @@
                                 readonly="1" 
                             />
                         <field name="created_by" readonly="1" />
+                        <field name="picking_id" readonly="1" />
                         <field name="company_id" invisible="1"/>
                         
                     </group>
