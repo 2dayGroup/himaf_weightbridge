@@ -31,6 +31,35 @@ class WeightbridgeRawMaterial(models.Model):
         ('uniq_name', 'unique(name)', "A name already exists with this name . Ticket ref must be unique!"),
     ]
     
+    # a la creation du ticket, generer automatique un BL a letat brouillon
+    @api.model_create_multi
+    def create(self, vals_list):
+        ticket = super().create(vals_list)
+        
+        #generer automatique un BL a letat brouillon
+        # Données de la facture à créer
+        product_domain = [
+            ('name', '=', 'REGIME DE GRAINE'),
+            ('company_id', '=', self.company_id.id),
+        ]
+        product_id = self.env['product.template'].search(product_domain, limit=1)
+        stock_data = {
+            'partner_id': ticket.partner_id,               # Remplacez par l'ID du partenaire associé à la facture
+            'scheduled_date': ticket.start_date,
+            'origin': ticket.name,          # Remplacez par le nom de l'origine de la facture
+            'code': 'incoming',
+            'picking_type_id': 1,          # Remplacez par l'ID du type de facture
+            'move_ids': [          # Liste des lignes de la facture
+                (0, 0, {
+                    'product_id': product_id,       # Remplacez par l'ID du produit associé à la ligne de facture
+                    'quantity_done': ticket.net_weight,         # Quantité de produits
+                }),
+            ],
+        }
+        self.env['stock.picking'].create(stock_data)
+        return ticket
+        
+    
     
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.
