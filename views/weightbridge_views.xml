@@ -17,7 +17,7 @@
             <tree create="false" default_order="start_date asc"> <!-- default_group_by="start_date" -->
                 <field name="start_date" string="Date"  widget="date"/> <!-- options="{'format': 'dd/MM/yyyy'}" -->
                 <field name="name" />
-                <field name="farmer_id"/>
+                <field name="partner_id"/>
                 <field name="net_weight" />
                 <field name="state"
                     decoration-success="state == 'paid'"
