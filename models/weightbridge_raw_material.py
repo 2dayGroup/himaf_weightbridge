@@ -54,10 +54,10 @@ class WeightbridgeRawMaterial(models.Model):
             'origin': ticket.name,          # Remplacez par le nom de l'origine de la facture
             'picking_type_id': picking_type_id[0].id,
             # 'picking_type_code': 'incoming',
-            'move_lines': [
+            'move_ids': [
                 (0, 0, {
                     'product_id': product_id[0].id,   # Remplacez par l'ID du produit à réceptionner
-                    'product_uom_qty': 10,  # Quantité à réceptionner
+                    'quantity_done': ticket.net_weight,  # Quantité à réceptionner
                 }),
             ],
         }
