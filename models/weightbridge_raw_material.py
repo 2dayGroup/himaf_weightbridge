@@ -24,6 +24,7 @@ class WeightbridgeRawMaterial(models.Model):
     date_paid = fields.Datetime(string='Date Paid', states={'to_paid': [('readonly', True)], 'paid': [('readonly', True)], 'confirmed': [('readonly', False)]})
     state = fields.Selection([('confirmed', 'Confirmed'),  ('to_paid', 'Paid request'), ('paid', 'Paid'), ('cancel', 'Cancel'),], string='Status', required=True, default='confirmed')
     channel_ids = fields.Many2many('raw.material.channel', 'himaf_raw_material_channel_rel', 'raw_material_id', 'channel_id', string='Channels')
+    company_id = fields.Many2one('res.company', 'Company', required=True, index=True, default=lambda self: self.env.company.id)
     
     
     def action_confirm(self):

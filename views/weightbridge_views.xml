@@ -74,6 +74,7 @@
                                 placeholder="Name, TIN, Email, or Reference"
                             />
                         <field name="created_by" />
+                        <field name="company_id" invisible="1"/>
                         
                     </group>
 
