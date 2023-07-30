@@ -52,6 +52,8 @@ class WeightbridgeRawMaterial(models.Model):
             'scheduled_date': ticket.start_date,
             'origin': ticket.name,          # Remplacez par le nom de l'origine de la facture
             'picking_type_id': picking_type_id[0].id,
+            'location_id': picking_type_id[0].default_location_src_id and 4,
+            'location_dest_id': picking_type_id[0].default_location_dest_id and 8,
             # 'picking_type_code': 'incoming',
             'move_ids': [
                 (0, 0, {
